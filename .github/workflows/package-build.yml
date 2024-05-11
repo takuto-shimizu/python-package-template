@@ -26,6 +26,7 @@ jobs:
       - name: Pack Build
         run: |
           poetry build
+          poetry self add artifacts-keyring
       - name: Pack publish
         run: |
           poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/mySamplePack/pypi/upload/
