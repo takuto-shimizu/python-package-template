@@ -12,21 +12,17 @@ jobs:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-        env:
-          SUPER_SECRET: ${{ secrets.AZURE_DEVOPS_SECRET }}
-      - name: Update pip
+      - name: Install pip
         run: |
           python -m pip install --upgrade pip
       - name: Install Poetry
         run: |
           pip install poetry
           poetry install --no-interaction
-      - name: Pack Build
+      - name: Package Build
         run: |
           poetry build
-      - name: Pack publish
+      - name: Package Publish
         run: |
           poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/myPackage/pypi/upload/ --local
           poetry config http-basic.azure tmp_token ${{ secrets.AZURE_DEVOPS_SECRET }} --local
