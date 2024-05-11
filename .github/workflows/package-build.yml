@@ -28,6 +28,6 @@ jobs:
           poetry build
       - name: Pack publish
         run: |
-          poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/mySamplePack/pypi/upload/ 
-          poetry config http-basic.azure tmp_token ${{ env.SUPER_SECRET }}
+          poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/mySamplePack/pypi/upload/ --local
+          poetry config http-basic.azure tmp_token ${{ env.SUPER_SECRET }} --local
           poetry publish -r azure
