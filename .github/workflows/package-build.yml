@@ -29,6 +29,6 @@ jobs:
           poetry self add artifacts-keyring
       - name: Pack publish
         run: |
-          poetry config http-basic.azure tmp_token ${{ env.SUPER_SECRET }} --local
+          poetry config http-basic.azure tmp_token "::add-mask::${{ env.SUPER_SECRET }}" --local
           poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/mySamplePack/pypi/upload/ --local
           poetry publish -r azure
