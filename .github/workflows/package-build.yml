@@ -26,7 +26,6 @@ jobs:
       - name: Pack Build
         run: |
           poetry build
-          poetry self add artifacts-keyring
       - name: Pack publish
         run: |
           poetry config http-basic.azure tmp_token ${{ env.SUPER_SECRET }} --local
