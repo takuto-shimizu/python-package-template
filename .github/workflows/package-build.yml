@@ -29,7 +29,6 @@ jobs:
           poetry self add artifacts-keyring
       - name: Pack publish
         run: |
-          echo ${{ secrets.SAMPLE_SECRETS }}
-          poetry config http-basic.azure tmp_token ${{ secrets.AZURE_DEVOPS_SECRET }} --local
-          poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/mySamplePack/pypi/upload/ --local
+          poetry config http-basic.azure tmp_token ${{ secrets.AZURE_DEVOPS_SECRET }}
+          poetry config repositories.azure https://pkgs.dev.azure.com/takshimizu/_packaging/mySamplePack/pypi/upload/ 
           poetry publish -r azure
