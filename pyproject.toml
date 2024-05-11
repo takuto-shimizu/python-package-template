@@ -315,7 +315,7 @@ overgeneral-exceptions= [
 ]
 
 [tool.poetry]
-name = "mySamplePack"
+name = "myPackage"
 version = "0.1.0"
 description = ""
 authors = ["shimizu"]
